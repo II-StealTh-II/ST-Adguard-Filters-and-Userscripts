@@ -1,0 +1,107 @@
+! ------------------------------------------------------------------------------
+! Title: ST Adguard Filters
+! Description: 개인용 광고 차단 및 사이트 최적화 필터
+! Version: 2026.0613.0
+! Update interval: 7 day
+! Expires: 7 day
+! ------------------------------------------------------------------------------
+
+! 디스코드
+! 디스코드 차단 해제
+@@||discord.com^
+
+! ------------------------------------------------------------------------------
+
+! 샤나인코더
+! 샤나인코더 Adblock 체크 우회
+shana.pe.kr##+js(set, checkShanaBlock, noopFunc)
+
+! ------------------------------------------------------------------------------
+
+! 에펨코리아
+! 광고 차단 해제 (포인트 파밍용)
+@@||adtrafficquality.google^$important,domain=fmkorea.com
+@@||doubleclick.net^$important,domain=fmkorea.com
+@@||googlesyndication.com^$important,domain=fmkorea.com
+@@||googletagservices.com^$important,domain=fmkorea.com
+
+! 게시판 및 우측 위젯 정리
+fmkorea.com##div#content > div.content_dummy > aside.content_widget > section.ul
+fmkorea.com##div[id^="fm_list"]:upward(1)
+
+! 프로필 사진 차단
+fmkorea.com##div#content > div.content_dummy > main > div.bd > div:has([src*="profile_image"])
+
+! ------------------------------------------------------------------------------
+
+! 지마켓
+! 광고 차단 해제
+@@||gmarket.co.kr^$important,document
+
+! ------------------------------------------------------------------------------
+
+! 쿨엔조이
+! 단축키 기능 차단
+||coolenjoy.net/plugin/hotkey/grz_hot_use.js$domain=coolenjoy.net
+
+! ------------------------------------------------------------------------------
+
+! 퀘이사존 PC
+! 광고 및 스크립트 허용 (예외 처리)
+@@||contentsfeed.com/RealMedia/ads^$domain=quasarzone.com,important
+@@||img2.quasarzone.co.kr/banner/
+@@||img2.quasarzone.com/banner/
+@@||quasarzone.com/RealMedia/ads^$domain=quasarzone.com,important
+@@||quasarzone.com/banner/
+quasarzone.com#@#.sponsor-logo-wrap
+quasarzone.com#@#[class^="banner-"]
+quasarzone.com#@#[class*="-banner-"]
+quasarzone.com#@#[class$="-banner"]
+quasarzone.com#@#[id^="banner-"]
+quasarzone.com#@#[id*="-banner-"]
+quasarzone.com#@#[id$="-banner"]
+
+! 광고 배너 차단
+quasarzone.com$$div[class="banner-video"]
+quasarzone.com##div.banner-wrap
+quasarzone.com##div#banner-bbs-hotdeal-takeover:not(:has([href*="contentsfeed"])):not(:has([src*="contentsfeed"]))
+quasarzone.com##div#banner-bbs-top-large
+quasarzone.com##div#banner-bbs-top:not(:has([href*="contentsfeed"])):not(:has([src*="contentsfeed"]))
+quasarzone.com##div#banner-bottom
+quasarzone.com##div#bbs-bottom-banner-container
+
+! 차단회원 게시글 숨기기 (a태그)
+quasarzone.com##:is(div.dabate-type-list, div.market-info-type-list) > table > tbody > tr:has(a[href$="('차단된 회원 게시물입니다.');"])
+quasarzone.com##dl.list-type-a > dd > ul > li:has(a[href$="('차단된 회원 게시물입니다.');"])
+
+! 차단회원 게시글 숨기기 (h3태그)
+quasarzone.com##:is(div.forum-latest-list-wrap, div.news-header-area, div.news-list-wrap) > ul > li:has(h3:has-text(/차단된 회원 게시물입니다./))
+quasarzone.com##div.main-hotdeal-content-area > div > div > ul.main-hotdeal-list > li:has(h3:has-text(/차단된 회원 게시물입니다./))
+quasarzone.com##ul.best-content-item-list > li:has(h3:has-text(/차단된 회원 게시물입니다./))
+quasarzone.com##div.desk-flexslider > div > ul > li > div:has(h3:has-text(/차단된 회원 게시물입니다./))
+
+! 차단회원 댓글 숨기기
+quasarzone.com##:is(div.best-comment-wrap, div.cider-complete-wrap, div.reply-list > ul) > li:has(.van-text)
+
+! 오늘의 베스트 / 유머게시판 숨기기
+quasarzone.com##div#best-0-contents > div > div > ul.best-content-item-list > li:has(a[href^="/bbs/qb_humor/"])
+
+! ------------------------------------------------------------------------------
+
+! 퀘이사존 모바일
+! 차단회원 게시글 숨기기 (a태그)
+quasarzone.com#?#div.content > div.list-area > div > ul > li:has(a[href$="('차단된 회원 게시물입니다.');"])
+
+! 차단회원 게시글 숨기기 (h3태그)
+quasarzone.com#?#:is(div.news-best-list-wrap, div.news-recent-list-wrap) > ul > li:has(h3:has-text(/차단된 회원 게시물입니다./))
+quasarzone.com#?#:is(div.desk-setup-list-wrapper, div.forum-latest-list-wrap, div.hotdeal-list-wrapper) > div > div > ul > li:has(h3:has-text(/차단된 회원 게시물입니다./))
+quasarzone.com#?#ul.best-item-list > li:has(h3:has-text(/차단된 회원 게시물입니다./))
+
+! 차단회원 댓글 숨기기
+quasarzone.com#?#div.comment > :is(div[class="commnet-main"], div.commnet-main.comment-reply, div.commnet-main.best-comment-wrap):not(:has(div.comment-user-image))
+quasarzone.com#?#div.comment > div.commnet-main.cider-complete-wrap > div.comment-user-form:not(:has(div.comment-user-info))
+
+! 오늘의 베스트 / 유머게시판 숨기기
+quasarzone.com##div#best-0-contents > div > div > div > div.best-list-wrap > ul.best-item-list > li:has(a[href^="/bbs/qb_humor/"])
+
+! ------------------------------------------------------------------------------

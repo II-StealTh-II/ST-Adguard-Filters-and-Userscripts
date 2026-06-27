@@ -1,0 +1,19 @@
+name: Purge jsDelivr Cache
+
+on:
+  push:
+    paths:
+      - 'Filters/AdGuard_Filters.txt'
+      - 'Filters/AdGuard_DNS_Filters.txt'
+      - 'Userscripts/WebRTC-Blocker.user.js'
+  workflow_dispatch:
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge Cache
+        run: |
+          curl -i -f https://purge.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/Filters/Adguard_Filters.txt
+          curl -i -f https://purge.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/Filters/Adguard_DNS_Filters.txt
+          curl -i -f https://purge.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/Userscripts/WebRTC-Blocker.user.js

@@ -1,0 +1,22 @@
+! ------------------------------------------------------------------------------
+! Title: ST Adguard DNS Filters
+! Description: 개인용 광고 차단 및 사이트 최적화 필터 (DNS)
+! Version: 2026.0430
+! Update interval: 7 day
+! Expires: 7 day
+! ------------------------------------------------------------------------------
+
+! SOOP 느려짐 방지
+@@||exlogcollector.sooplive.com^
+
+! 일베 차단
+||ilbe.com^
+
+! 에펨코리아 광고 차단 해제용
+@@||doubleclick.net^
+@@||googlesyndication.com^
+@@||adtrafficquality.google^
+@@||googletagservices.com^
+
+! 퀘이사존 광고 허용
+@@||contentsfeed.com^
