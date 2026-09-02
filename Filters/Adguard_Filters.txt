@@ -1,7 +1,7 @@
 ! ------------------------------------------------------------------------------
 ! Title: ST Adguard Filters
 ! Description: 개인용 광고 차단 및 사이트 최적화 필터
-! Version: 2026.0902.0
+! Version: 2026.0902.1
 ! Update interval: 7 day
 ! Expires: 7 day
 ! ------------------------------------------------------------------------------
@@ -54,12 +54,12 @@ fmkorea.com##div#content > div.content_dummy > main > div.bd > div:has([src*="pr
 @@||img2.quasarzone.com/banner/
 @@||quasarzone.com/RealMedia/ads^$important
 @@||quasarzone.com/banner/
-quasarzone.com#@#[class^="banner-"]
-quasarzone.com#@#[class*="-banner-"]
-quasarzone.com#@#[class$="-banner"]
-quasarzone.com#@#[id^="banner-"]
-quasarzone.com#@#[id*="-banner-"]
-quasarzone.com#@#[id$="-banner"]
+quasarzone.com#@#div[class^="banner-"]
+quasarzone.com#@#div[class*="-banner-"]
+quasarzone.com#@#div[class$="-banner"]
+quasarzone.com#@#div[id^="banner-"]
+quasarzone.com#@#div[id*="-banner-"]
+quasarzone.com#@#div[id$="-banner"]
 
 ! 광고 배너 차단
 quasarzone.com$$div[class="banner-video"]
