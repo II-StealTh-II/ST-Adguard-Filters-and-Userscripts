@@ -1,7 +1,7 @@
 ! ------------------------------------------------------------------------------
 ! Title: ST Adguard Filters
 ! Description: 개인용 광고 차단 및 사이트 최적화 필터
-! Version: 2026.0902.1
+! Version: 2026.0903.0
 ! Update interval: 7 day
 ! Expires: 7 day
 ! ------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ quasarzone.com##div#banner-bbs-top:not(:has([href*="contentsfeed"])):not(:has([s
 quasarzone.com##div#banner-bottom:not(:has([href*="contentsfeed"])):not(:has([src*="contentsfeed"]))
 quasarzone.com##div#bbs-bottom-banner-container:not(:has([href*="contentsfeed"])):not(:has([src*="contentsfeed"]))
 
-! 차단회원 게시글 숨기기 (PC)
+! 차단회원 게시글 숨기기
 quasarzone.com##div.v2-list > div.v2-list-row:has(span.qz-c-grey:has-text(차단된 회원 게시물입니다.))
 
 ! 차단회원 댓글 숨기기
@@ -88,6 +88,9 @@ quasarzone.com##div.v2-list > div.v2-list-row.v2-partner-row
 ! 퀘이사존 모바일
 ! 차단회원 게시글 숨기기
 quasarzone.com##li.aio-row--blocked
+quasarzone.com#?#:is(div.news-best-list-wrap, div.news-recent-list-wrap) > ul > li:has(h3:has-text(/차단된 회원 게시물입니다./))
+quasarzone.com#?#:is(div.desk-setup-list-wrapper, div.forum-latest-list-wrap, div.hotdeal-list-wrapper) > div > div > ul > li:has(h3:has-text(/차단된 회원 게시물입니다./))
+quasarzone.com#?#ul.best-item-list > li:has(h3:has-text(/차단된 회원 게시물입니다./))
 
 ! 오늘의 베스트 / 유머게시판 숨기기
 quasarzone.com##div#best-0-contents > div > div > div > div.best-list-wrap > ul.best-item-list > li:has(a[href^="/bbs/qb_humor/"])
