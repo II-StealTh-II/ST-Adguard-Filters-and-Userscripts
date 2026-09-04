@@ -2,17 +2,27 @@ name: Purge jsDelivr Cache
 
 on:
   push:
-    paths:
-      - 'Filters/AdGuard_Filters.txt'
-      - 'Filters/AdGuard_DNS_Filters.txt'
-      - 'Userscripts/WebRTC-Blocker.user.js'
+    tags:
+      - '*'
   workflow_dispatch:
 
 jobs:
   purge:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Check tag format
+        if: github.event_name == 'push'
+        run: |
+          if [[ ! "${{ github.ref_name }}" =~ ^[0-9]{4}\.[0-9]{4}\.[0-9]+$ ]]; then
+            echo "Invalid tag format: ${{ github.ref_name }}"
+            echo "Expected format: XXXX.XXXX.X"
+            exit 1
+          fi
+
+          echo "Valid tag format: ${{ github.ref_name }}"
+
       - name: Purge Cache
         run: |
-          curl -i -f https://purge.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/Filters/Adguard_Filters.txt
-          curl -i -f https://purge.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/Filters/Adguard_DNS_Filters.txt
+          curl -i -f https://purge.jsdelivr.net/gh/${{ github.repository }}@latest/Filters/Adguard_Filters.txt
+          curl -i -f https://purge.jsdelivr.net/gh/${{ github.repository }}@latest/Filters/Adguard_DNS_Filters.txt
